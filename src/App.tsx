@@ -6,6 +6,7 @@ import Loading from "./components/layout/Loading";
 import Navbar from "./components/nav/Navbar";
 import { SearchProps } from "./components/Search";
 import { TrafficImagesGrid } from "./components/TrafficImagesGrid";
+import { filterDataBySearchString } from "./utils/search";
 
 const App = () => {
 	const [dateString, setDateString] = useState("");
@@ -44,6 +45,8 @@ const App = () => {
 		handleSearch,
 	};
 
+	const display = filterDataBySearchString(data, search);
+
 	return (
 		<Container>
 			<Navbar
@@ -53,7 +56,7 @@ const App = () => {
 			{isLoading || isFetching ? (
 				<Loading />
 			) : (
-				<TrafficImagesGrid display={data ?? []} />
+				<TrafficImagesGrid display={display} />
 			)}
 		</Container>
 	);
