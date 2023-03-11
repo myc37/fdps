@@ -1,4 +1,6 @@
 import {
+	CachedLocationData,
+	CleanedCachedImageData,
 	CleanedImageData,
 	TrafficImagesDataFromApi,
 } from "../../types/trafficImages.types";
@@ -23,14 +25,34 @@ export const cleanImagesData = async (
 		const streetName = await getStreetName(camera.location);
 
 		cleanedImagesData.push({
-			image: {
-				src: camera.image,
-				id: camera.image_metadata.md5,
-			},
+			image: camera.image,
 			streetName,
 			location: camera.location,
 		});
 	}
 
 	return cleanedImagesData;
+};
+
+export const addImageToCachedLocationData = (
+	cachedLocationData: CachedLocationData,
+	trafficImagesData: TrafficImagesDataFromApi
+): Array<CleanedCachedImageData> => {
+	const imageMap: Record<string, string> = {};
+	for (const data of trafficImagesData.items[0].cameras ?? []) {
+		imageMap[`${data.location.latitude}${data.location.longitude}`] =
+			data.image;
+	}
+
+	return cachedLocationData.map((data) => {
+		return {
+			image: imageMap[`${data.latitude}${data.longitude}`],
+			streetName: data.streetName,
+			location: {
+				latitude: data.latitude,
+				longitude: data.longitude,
+			},
+			area: data.area,
+		};
+	});
 };

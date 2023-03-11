@@ -23,10 +23,7 @@ export type TrafficImagesDataFromApi = {
 };
 
 export type CleanedImageData = {
-	image: {
-		id: ImageMetaData["md5"];
-		src: string;
-	};
+	image: string;
 	streetName: string;
 	location: Location;
 };
@@ -34,3 +31,13 @@ export type CleanedImageData = {
 export type CleanedImageDataWithWeather = CleanedImageData & {
 	weather: string;
 };
+
+export type CachedLocationData = Array<
+	Location & {
+		id: number;
+		streetName: string;
+		area: string;
+	}
+>;
+
+export type CleanedCachedImageData = CleanedImageData & { area: string };

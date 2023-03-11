@@ -1,4 +1,5 @@
 import {
+	CleanedCachedImageData,
 	CleanedImageData,
 	CleanedImageDataWithWeather,
 } from "../../types/trafficImages.types";
@@ -37,6 +38,18 @@ export const getAreasAndForecast = async (
 			return { areas, forecast };
 		});
 
+export const getForecast = async (datetimeString: string) =>
+	await fetch(getWeatherApi(datetimeString))
+		.then((res) => res.json())
+		.then((res: WeatherDataFromApi) => {
+			const forecast: Record<string, string> = {};
+			res.items[0].forecasts.forEach(
+				(data) => (forecast[data.area] = data.forecast)
+			);
+
+			return forecast;
+		});
+
 export const addWeatherToCleanedImagesData = (
 	cleanedImagesData: Array<CleanedImageData>,
 	areas: Set<Location>,
@@ -69,4 +82,13 @@ export const addWeatherToCleanedImagesData = (
 	}
 
 	return cleanedImagesDataWithWeather;
+};
+
+export const addWeatherToCleanedCachedImagesData = (
+	cleanedImagesData: Array<CleanedCachedImageData>,
+	forecast: Record<string, string>
+): Array<CleanedImageDataWithWeather> => {
+	return cleanedImagesData.map((data) => {
+		return { ...data, weather: forecast[data.area] };
+	});
 };
