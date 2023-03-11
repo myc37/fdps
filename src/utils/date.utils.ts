@@ -1,11 +1,11 @@
-export const getCurrentDatetimeString = () => {
+export const getCurrentDateString = () => {
 	const now = new Date();
 	now.setHours(now.getHours() + 8);
-	return convertDatetimeToString(now);
+	return convertDateToString(now);
 };
 
-export const convertDatetimeToString = (datetime: Date) =>
+export const convertDateToString = (datetime: Date) =>
 	datetime.toISOString().substring(0, 16);
 
-export const formatDatetimeStringForApiEndpoint = (datetimeString: string) =>
+export const formatDateStringForApiEndpoint = (datetimeString: string) =>
 	datetimeString.replaceAll(":", "%3A");

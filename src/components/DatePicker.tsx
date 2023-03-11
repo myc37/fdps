@@ -1,5 +1,5 @@
 import { ChangeEventHandler, MouseEventHandler, type FC } from "react";
-import { getCurrentDatetimeString } from "../utils/date.utils";
+import { getCurrentDateString } from "../utils/date.utils";
 import Input from "./control/Input";
 
 export type DatePickerProps = {
@@ -35,7 +35,7 @@ const DatePicker: FC<DatePickerProps> = ({
 				id="datetime-picker"
 				type="datetime-local"
 				value={dateString}
-				max={getCurrentDatetimeString()}
+				max={getCurrentDateString()}
 				onChange={handleSelectDate}
 				className={`${showLabel ? "ml-2" : ""}`}
 			/>

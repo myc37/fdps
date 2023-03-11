@@ -2,11 +2,11 @@ import {
 	CleanedImageData,
 	TrafficImagesDataFromApi,
 } from "../../types/trafficImages.types";
-import { formatDatetimeStringForApiEndpoint } from "../../utils/date.utils";
+import { formatDateStringForApiEndpoint } from "../../utils/date.utils";
 import { getStreetName } from "./reverseGeocoding.helpers";
 
 export const getTrafficImagesApi = (datetimeString: string) =>
-	`https://api.data.gov.sg/v1/transport/traffic-images?date_time=${formatDatetimeStringForApiEndpoint(
+	`https://api.data.gov.sg/v1/transport/traffic-images?date_time=${formatDateStringForApiEndpoint(
 		datetimeString
 	)}`;
 

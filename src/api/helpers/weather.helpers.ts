@@ -3,12 +3,12 @@ import {
 	CleanedImageDataWithWeather,
 } from "../../types/trafficImages.types";
 import { WeatherDataFromApi } from "../../types/weather.types";
-import { formatDatetimeStringForApiEndpoint } from "../../utils/date.utils";
+import { formatDateStringForApiEndpoint } from "../../utils/date.utils";
 import { Location } from "../../types";
 import { calculateHaversineDistanceBetweenLocations } from "../../utils/math.utils";
 
 const getWeatherApi = (datetimeString: string) =>
-	`https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?date_time=${formatDatetimeStringForApiEndpoint(
+	`https://api.data.gov.sg/v1/environment/2-hour-weather-forecast?date_time=${formatDateStringForApiEndpoint(
 		datetimeString
 	)}`;
 
