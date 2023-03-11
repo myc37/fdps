@@ -30,7 +30,7 @@ You can rename the `.env.example` file in the repository to `.env` and add the A
 
 #### 4. Seed database
 
-The local database will need to be set up and seed.
+The local database will need to be set up and seeded.
 ```
 npx prisma migrate dev
 npx prisma db seed
