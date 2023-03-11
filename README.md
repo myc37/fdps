@@ -25,5 +25,10 @@ You can rename the `.env.example` file in the repository to `.env` and add the A
 
 #### 4. Host the web application locally
 
-Finally, run the application with the command `npm run dev` and access it at `http://127.0.0.1:5173/`.
-You can also access it on your mobile phone via your IP address, eg; `192.168.X.X:5173/`.
+Finally, run the application with the following commands:
+```
+npm run build
+npm run preview
+```
+You will then be able to access the application at `127.0.0.1:4173` (by default). 
+You will also be able to access it on your mobile phone using your IP address, eg; `192.168.X.X:4173`.
