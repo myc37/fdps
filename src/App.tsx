@@ -2,6 +2,7 @@ import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { getTrafficImages } from "./api";
 import { type DatePickerProps } from "./components/DatePicker";
 import Container from "./components/layout/Container";
+import Loading from "./components/layout/Loading";
 import Navbar from "./components/nav/Navbar";
 import { TrafficImagesGrid } from "./components/TrafficImagesGrid";
 
@@ -37,7 +38,7 @@ const App = () => {
 		<Container>
 			<Navbar datePickerProps={datePickerProps} />
 			{isLoading || isFetching ? (
-				<div>loading...</div>
+				<Loading />
 			) : (
 				<TrafficImagesGrid display={data ?? []} />
 			)}
