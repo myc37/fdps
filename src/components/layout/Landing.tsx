@@ -7,7 +7,7 @@ type Props = {
 
 const Landing: FC<Props> = ({ datePickerProps }) => {
 	return (
-		<div className="flex flex-col md:flex-row justify-center gap-y-8 md:gap-x-16 h-screen md:h-auto">
+		<div className="flex flex-col md:flex-row justify-center gap-y-8 h-screen md:h-auto">
 			<div className="flex flex-col justify-center ml-4 md:w-1/3 md:h-screen">
 				<div className="text-xl md:text-3xl mb-8 font-semibold">
 					Making traffic camera images more accesible to all in
@@ -19,9 +19,9 @@ const Landing: FC<Props> = ({ datePickerProps }) => {
 				<DatePicker {...datePickerProps} />
 			</div>
 			<img
-				src="landing.jpeg"
+				src="landing.png"
 				alt="landing"
-				className="md:mt-0 object-contain p-8"
+				className="object-contain w-1/2 hidden md:inline-block"
 			/>
 		</div>
 	);
