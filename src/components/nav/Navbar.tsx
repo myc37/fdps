@@ -1,12 +1,14 @@
 import { FC, useState, useEffect } from "react";
 import { Fade } from "react-awesome-reveal";
 import DatePicker, { type DatePickerProps } from "../DatePicker";
+import Search, { SearchProps } from "../Search";
 
 type Props = {
 	datePickerProps: DatePickerProps;
+	searchProps: SearchProps;
 };
 
-const Navbar: FC<Props> = ({ datePickerProps }) => {
+const Navbar: FC<Props> = ({ datePickerProps, searchProps }) => {
 	const [isAtTop, setIsAtTop] = useState(true);
 
 	const handleScrollPastTop = () => {
@@ -29,6 +31,7 @@ const Navbar: FC<Props> = ({ datePickerProps }) => {
 		>
 			<Fade direction="down" triggerOnce>
 				<DatePicker {...datePickerProps} />
+				<Search {...searchProps} />
 			</Fade>
 		</div>
 	);
