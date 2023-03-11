@@ -3,6 +3,7 @@ import {
 	TrafficImagesDataFromApi,
 } from "../../types/trafficImages.types";
 import { formatDatetimeStringForApiEndpoint } from "../../utils/date";
+import { getStreetName } from "./reverseGeocoding.helpers";
 
 export const getTrafficImagesApi = (datetimeString: string) =>
 	`https://api.data.gov.sg/v1/transport/traffic-images?date_time=${formatDatetimeStringForApiEndpoint(
@@ -19,7 +20,7 @@ export const cleanImagesData = async (
 ): Promise<Array<CleanedImageData>> => {
 	const cleanedImagesData: Array<CleanedImageData> = [];
 	for (const camera of trafficImagesData.items[0].cameras ?? []) {
-		const streetName = "Unknown Location";
+		const streetName = await getStreetName(camera.location);
 
 		cleanedImagesData.push({
 			image: {
