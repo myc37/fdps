@@ -1,5 +1,5 @@
 import { ChangeEventHandler, MouseEventHandler, type FC } from "react";
-import { getCurrentDatetimeString } from "../utils/date";
+import { getCurrentDatetimeString } from "../utils/date.utils";
 import Input from "./control/Input";
 
 export type DatePickerProps = {
