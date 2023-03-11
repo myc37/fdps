@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import { Fade } from "react-awesome-reveal";
-import DatePicker, { DatePickerProps } from "../DatePicker";
+import DatePicker, { type DatePickerProps } from "../DatePicker";
 
 type Props = {
 	datePickerProps: DatePickerProps;
