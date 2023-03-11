@@ -6,3 +6,6 @@ export const getCurrentDatetimeString = () => {
 
 export const convertDatetimeToString = (datetime: Date) =>
 	datetime.toISOString().substring(0, 16);
+
+export const formatDatetimeStringForApiEndpoint = (datetimeString: string) =>
+	datetimeString.replaceAll(":", "%3A");
