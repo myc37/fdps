@@ -25,7 +25,10 @@ const DatePicker: FC<DatePickerProps> = ({
 	return (
 		<form className="flex gap-x-2 items-center">
 			{showLabel ? (
-				<label htmlFor="datetime-picker" className="">
+				<label
+					htmlFor="datetime-picker"
+					className="hidden md:inline-block"
+				>
 					Find latest traffic camera images as of:
 				</label>
 			) : (
@@ -37,7 +40,7 @@ const DatePicker: FC<DatePickerProps> = ({
 				value={dateString}
 				max={getCurrentDateString()}
 				onChange={handleSelectDate}
-				className={`${showLabel ? "ml-2" : ""}`}
+				className={`${showLabel ? "md:ml-2" : ""}`}
 			/>
 			<button
 				type="submit"
@@ -49,7 +52,7 @@ const DatePicker: FC<DatePickerProps> = ({
 			>
 				Find {showLabel ? "" : "Images"}
 				<span
-					className={`invisible bg-red-300 w-80 max-w-96 rounded-md absolute top-1/2 right-1/8 p-2 z-20 ${
+					className={`invisible bg-red-300 w-80 max-w-96 rounded-md absolute top-1/2 right-1/8 p-2 z-20 hidden md:inline-block ${
 						disabled ? "group-hover:visible" : ""
 					}`}
 				>

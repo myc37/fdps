@@ -9,7 +9,7 @@ type Props = {
 export const TrafficImagesGrid: FC<Props> = ({ display }) => {
 	return (
 		<Fade cascade triggerOnce>
-			<div className="p-8 grid grid-cols-4 gap-4">
+			<div className="p-8 grid grid-cols-1 md:grid-cols-4 gap-y-4 md:gap-4 w-full">
 				{display.map((doc) => (
 					<div
 						key={doc.image.id}
