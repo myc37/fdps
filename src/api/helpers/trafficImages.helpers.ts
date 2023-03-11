@@ -1,4 +1,7 @@
-import { TrafficImagesDataFromApi } from "../../types/trafficImages.types";
+import {
+	CleanedImageData,
+	TrafficImagesDataFromApi,
+} from "../../types/trafficImages.types";
 import { formatDatetimeStringForApiEndpoint } from "../../utils/date";
 
 export const getTrafficImagesApi = (datetimeString: string) =>
@@ -10,3 +13,23 @@ export const getTrafficImagesData = async (
 	datetimeString: string
 ): Promise<TrafficImagesDataFromApi> =>
 	await fetch(getTrafficImagesApi(datetimeString)).then((res) => res.json());
+
+export const cleanImagesData = async (
+	trafficImagesData: TrafficImagesDataFromApi
+): Promise<Array<CleanedImageData>> => {
+	const cleanedImagesData: Array<CleanedImageData> = [];
+	for (const camera of trafficImagesData.items[0].cameras ?? []) {
+		const streetName = "Unknown Location";
+
+		cleanedImagesData.push({
+			image: {
+				src: camera.image,
+				id: camera.image_metadata.md5,
+			},
+			streetName,
+			location: camera.location,
+		});
+	}
+
+	return cleanedImagesData;
+};
