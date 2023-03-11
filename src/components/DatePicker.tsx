@@ -7,6 +7,7 @@ export type DatePickerProps = {
 	isNewDateString: boolean;
 	handleSelectDate: ChangeEventHandler<HTMLInputElement>;
 	handleSubmit: MouseEventHandler<HTMLButtonElement>;
+	showLabel?: boolean;
 };
 
 const DatePicker: FC<DatePickerProps> = ({
@@ -14,6 +15,7 @@ const DatePicker: FC<DatePickerProps> = ({
 	isNewDateString,
 	handleSelectDate,
 	handleSubmit,
+	showLabel,
 }) => {
 	const isEmpty = dateString === "";
 	const isValidDatetimeString =
@@ -22,16 +24,20 @@ const DatePicker: FC<DatePickerProps> = ({
 
 	return (
 		<form className="flex gap-x-2 items-center">
-			<label htmlFor="datetime-picker" className="">
-				Find latest traffic camera images as of:
-			</label>
+			{showLabel ? (
+				<label htmlFor="datetime-picker" className="">
+					Find latest traffic camera images as of:
+				</label>
+			) : (
+				<></>
+			)}
 			<Input
 				id="datetime-picker"
 				type="datetime-local"
 				value={dateString}
 				max={getCurrentDatetimeString()}
 				onChange={handleSelectDate}
-				className="mx-2"
+				className={`${showLabel ? "ml-2" : ""}`}
 			/>
 			<button
 				type="submit"
@@ -41,7 +47,7 @@ const DatePicker: FC<DatePickerProps> = ({
 				}`}
 				disabled={disabled}
 			>
-				Find
+				Find {showLabel ? "" : "Images"}
 				<span
 					className={`invisible bg-red-300 w-80 max-w-96 rounded-md absolute top-1/2 right-1/8 p-2 z-20 ${
 						disabled ? "group-hover:visible" : ""

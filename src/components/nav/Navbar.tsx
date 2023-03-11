@@ -30,7 +30,7 @@ const Navbar: FC<Props> = ({ datePickerProps, searchProps }) => {
 			}`}
 		>
 			<Fade direction="down" triggerOnce>
-				<DatePicker {...datePickerProps} />
+				<DatePicker {...datePickerProps} showLabel />
 				<Search {...searchProps} />
 			</Fade>
 		</div>
